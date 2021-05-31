@@ -551,6 +551,7 @@ int load_png(const char *filename, struct image **img) {
   int chunk_idx = -1;
 
   struct png_chunk *current_chunk = malloc(sizeof(struct png_chunk));
+  current_chunk->chunk_data = NULL;
 
   FILE *input = fopen(filename, "rb");
 
