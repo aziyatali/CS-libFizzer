@@ -1,0 +1,24 @@
+INFO: Seed: 2091810189
+INFO: Loaded 1 modules   (304 inline 8-bit counters): 304 [0x5af260, 0x5af390), 
+INFO: Loaded 1 PC tables (304 PCs): 304 [0x5713b8,0x5726b8), 
+./fuzzer_load_png_name: Running 1 inputs 1 time(s) each.
+Running: crash-da39a3ee5e6b4b0d3255bfef95601890afd80709
+AddressSanitizer:DEADLYSIGNAL
+=================================================================
+==4393==ERROR: AddressSanitizer: SEGV on unknown address 0xffffffffffffff90 (pc 0x7f106d63dd5a bp 0x7ffd77ccca70 sp 0x7ffd77ccc228 T0)
+==4393==The signal is caused by a READ memory access.
+    #0 0x7f106d63dd5a  /build/glibc-eX1tMB/glibc-2.31/string/../sysdeps/x86_64/multiarch/../strlen.S:120
+    #1 0x4f3c17 in fopen (/home/aziyatali/Desktop/LibFuzzer/src/fuzzer_load_png_name+0x4f3c17)
+    #2 0x55049f in load_png /home/aziyatali/Desktop/LibFuzzer/src/pngparser.c:556:17
+    #3 0x54d964 in LLVMFuzzerTestOneInput /home/aziyatali/Desktop/LibFuzzer/src/fuzzer_load_png_name.c:10:7
+    #4 0x4586f1 in fuzzer::Fuzzer::ExecuteCallback(unsigned char const*, unsigned long) (/home/aziyatali/Desktop/LibFuzzer/src/fuzzer_load_png_name+0x4586f1)
+    #5 0x443e62 in fuzzer::RunOneTest(fuzzer::Fuzzer*, char const*, unsigned long) (/home/aziyatali/Desktop/LibFuzzer/src/fuzzer_load_png_name+0x443e62)
+    #6 0x449916 in fuzzer::FuzzerDriver(int*, char***, int (*)(unsigned char const*, unsigned long)) (/home/aziyatali/Desktop/LibFuzzer/src/fuzzer_load_png_name+0x449916)
+    #7 0x4725d2 in main (/home/aziyatali/Desktop/LibFuzzer/src/fuzzer_load_png_name+0x4725d2)
+    #8 0x7f106d5b00b2 in __libc_start_main /build/glibc-eX1tMB/glibc-2.31/csu/../csu/libc-start.c:308:16
+    #9 0x41e52d in _start (/home/aziyatali/Desktop/LibFuzzer/src/fuzzer_load_png_name+0x41e52d)
+
+AddressSanitizer can not provide additional info.
+SUMMARY: AddressSanitizer: SEGV /build/glibc-eX1tMB/glibc-2.31/string/../sysdeps/x86_64/multiarch/../strlen.S:120 
+==4393==ABORTING
+
